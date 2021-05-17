@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: transacoes
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/transacoes}
+    username: ${DB_USER:root}
+    password: ${DB_PW:password}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, prometheus
+
+opentracing:
+  jaeger:
+    enabled: ${JAEGER_ENABLED:true}
+    service-name: ${spring.application.name}
+    http-sender:
+      url: ${JAEGER_ENDPOINT:http://localhost:14268/api/traces}
+    probabilistic-sampler:
+      sampling-rate: ${JAEGER_SAMPLER:1}

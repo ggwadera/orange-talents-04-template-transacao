@@ -12,6 +12,14 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  kafka:
+    bootstrap-servers: ${KAFKA_HOST:localhost:9092}
+    consumer:
+      group-id: ${KAFKA_CONSUMER_GROUP_ID:${spring.application.name}}
+      auto-offset-reset: ${KAFKA_AUTO-OFFSET-RESET:latest}
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        "[spring.json.trusted.packages]": "*"
 
 management:
   endpoints:

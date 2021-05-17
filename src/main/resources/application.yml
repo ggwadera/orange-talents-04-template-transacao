@@ -35,3 +35,7 @@ opentracing:
       url: ${JAEGER_ENDPOINT:http://localhost:14268/api/traces}
     probabilistic-sampler:
       sampling-rate: ${JAEGER_SAMPLER:1}
+
+kafka:
+  topics:
+    transactions: ${KAFKA_TOPICS_TRANSACTIONS:transacoes}

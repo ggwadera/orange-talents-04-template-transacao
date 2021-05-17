@@ -28,11 +28,4 @@ public class CartaoMessage {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "CartaoRequest{" +
-            "id=" + id +
-            ", email='" + email + '\'' +
-            '}';
-    }
 }

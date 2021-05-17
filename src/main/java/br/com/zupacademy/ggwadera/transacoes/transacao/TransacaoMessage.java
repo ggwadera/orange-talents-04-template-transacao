@@ -76,14 +76,4 @@ public class TransacaoMessage {
         return new Transacao(id, valor, efetivadaEm, estabelecimento.toModel(), cartao.getId());
     }
 
-    @Override
-    public String toString() {
-        return "TransacaoRequest{" +
-            "id=" + id +
-            ", valor=" + valor +
-            ", estabelecimento=" + estabelecimento +
-            ", cartao=" + cartao +
-            ", efetivadaEm=" + efetivadaEm +
-            '}';
-    }
 }

@@ -1,12 +1,9 @@
 package br.com.zupacademy.ggwadera.transacoes.transacao;
 
-import org.apache.kafka.clients.admin.NewTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
@@ -22,14 +19,15 @@ public class TransacaoListener {
         this.transacaoRepository = transacaoRepository;
     }
 
-    @KafkaListener(topics = "transacoes")
+    @KafkaListener(topics = "${kafka.topics.transactions}")
     public void listenerTransacoes(@Valid TransacaoMessage message) {
-        logger.info("Nova transação {}", message);
+        logger.info(
+            "Nova transação id={} valor={} estabelecimento={}",
+            message.getId(),
+            message.getValor(),
+            message.getEstabelecimento().getNome()
+        );
         transacaoRepository.save(message.toModel());
     }
 
-    @Bean
-    public NewTopic topic() {
-        return TopicBuilder.name("transacoes").build();
-    }
 }

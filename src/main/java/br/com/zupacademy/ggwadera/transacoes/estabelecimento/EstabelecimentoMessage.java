@@ -41,12 +41,4 @@ public class EstabelecimentoMessage {
         return new Estabelecimento(nome, cidade, endereco);
     }
 
-    @Override
-    public String toString() {
-        return "EstabelecimentoRequest{" +
-            "nome='" + nome + '\'' +
-            ", cidade='" + cidade + '\'' +
-            ", endereco='" + endereco + '\'' +
-            '}';
-    }
 }
